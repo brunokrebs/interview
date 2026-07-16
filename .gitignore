@@ -1,6 +1,7 @@
 # Interviewer-only material — never publish
 SOLUTION.mjs
 INTERVIEWER_NOTES.md
+DESIGN_INTERVIEWER_NOTES.md
 
 .DS_Store
 node_modules/
