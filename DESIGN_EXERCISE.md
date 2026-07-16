@@ -36,13 +36,12 @@ Think out loud. Ask clarifying questions before committing to a design. State yo
 
 ## Fallback topic (if you'd rather bring your own, skip this)
 
-Design a service that turns a plain-English request into a **structured artifact that must be valid before anyone can use it**. Pick any concrete example you like: a natural-language request becomes a config file, a spreadsheet formula, a database query, or a set of form-fill rules. The catch: the artifact has to satisfy strict domain rules (a schema plus business constraints), and an invalid result must never silently reach the user.
+Design a service that turns a plain-English request into a **structured artifact that must be valid before anyone can use it**. Pick any example: the request becomes a config file, a spreadsheet formula, a database query, or a set of form-fill rules. The catch: the artifact must satisfy strict domain rules (schema plus business constraints), and an invalid result must never silently reach the user.
 
-The interesting part is reliability, not the prompt. Some directions we might explore:
+The interesting part is reliability, not the prompt. Directions we might explore:
 
-- **Getting valid output:** how do you constrain the model's output shape up front, and how do you validate it afterward? Why both?
-- **Self-correction:** the model returns something that parses but breaks a business rule. How do you get to a valid result without starting from scratch or looping forever?
-- **Long or large requests:** generation takes many seconds and inputs can be big. How does the request/response flow work so nothing times out, and how do you show progress?
-- **Shortcuts:** some requests are common or known ahead of time. Where would you add caching or precomputed results, and how does a user force a fresh run?
-- **Observability:** a user says the output was wrong yesterday. What did you record to explain what happened?
-- **Failure and cost:** what are all the ways this can fail or run up cost, and how do you bound each?
+- **Getting valid output:** how do you constrain the output shape up front and validate it afterward? Why both?
+- **Self-correction:** the model returns something that parses but breaks a business rule. How do you reach a valid result without starting over or looping forever?
+- **Long or large requests:** generation is slow and inputs can be big. How does the flow avoid timeouts, and how do you show progress?
+- **Shortcuts and observability:** where would caching or precomputed results fit, and what would you record to explain a bad result after the fact?
+- **Failure and cost:** what are the ways this fails or runs up cost, and how do you bound each?
